@@ -139,6 +139,21 @@ function formValidate() {
         minRowValCheck: ["min_row_val", "max_row_val"], // use the jquery method created earlier to check between min and max row value
       },
     },
+    // error messages to direct user to finding/correcting them
+    messages: {
+      min_col_val: {
+        required: "No number found for min col, please enter a number.",
+      },
+      max_col_val: {
+        required: "No number found for max col, please enter a number."
+      },
+      min_row_val: {
+        required: "No number found for min row, please enter a number."
+      },
+      max_row_val: {
+        required: "No number found for max row, please enter a number."
+      }
+    },
     // only run the following functions if the form passes validation successfully
     submitHandler: function (form) {
       if ($("#form").valid() == true) {
