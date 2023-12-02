@@ -1,0 +1,100 @@
+<!--
+  Name: Anthony Liang
+  Course: GUI I
+  Email: anthony_liang@student.uml.edu
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gui-hw3</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <!--links that source fonts from Goole Fonts for styling-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--a flex container that holds two divs, the form div and the table div -->
+    <div id="container">
+      <div id="form-div">
+        <form id="form" action="">
+          <!--require attributes on all inputs to force user to enter a value otherwise form
+          won't submit-->
+          <label for="min_col_val">Minimum Column Value</label>
+          <input
+            type="text"
+            id="min_col_val"
+            name="min_col_val"
+            value="0"
+            required
+          />
+          <div id="min_col_slider"></div>
+
+          <label for="max_col_val">Maximum Column Value</label>
+          <input
+            type="text"
+            id="max_col_val"
+            name="max_col_val"
+            value="0"
+            required
+          />
+          <div id="max_col_slider"></div>
+          <div id="col-err"></div>
+
+          <label for="min_row_val">Minimum Row Value</label>
+          <input
+            type="text"
+            id="min_row_val"
+            name="min_row_val"
+            value="0"
+            required
+          />
+          <div id="min_row_slider"></div>
+
+          <label for="max_row_val">Maximum Row Value</label>
+          <input
+            type="text"
+            id="max_row_val"
+            name="max_row_val"
+            value="0"
+            required
+          />
+          <div id="max_row_slider"></div>
+          <div id="row-err"></div>
+
+          <input type="submit" value="Submit" />
+        </form>
+        <button id="remove-all-tabs-btn">Remove Tabs</button>
+      </div>
+      <!--the div to hold solely the table itself-->
+      <div id="table-div">
+        <table>
+          <!--thead to hold the table header-->
+          <thead id="thead"></thead>
+          <!--tbody to hold the table body contents-->
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <!--tables under tabs-->
+      <div id="table-tabs">
+        <ul></ul>
+      </div>
+    </div>
+  </body>
+
+  <link
+    rel="stylesheet"
+    href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+  <script src="script.js"></script>
+</html>

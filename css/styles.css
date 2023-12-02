@@ -1,0 +1,71 @@
+/*
+  Name: Anthony Liang
+  Course: GUI I
+  Email: anthony_liang@student.uml.edu
+*/
+
+* {
+  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+/* flex container to handle the form and table div */
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#form-div {
+  width: max-content; /* set width to max-content to fit all of content and also prevent wrapping */
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: lightblue;
+}
+
+#table-div {
+  margin-top: 2em;
+  border: 1px solid black;
+  overflow: scroll;
+  width: 50%; /* set the width of the table div to 50% of the window screen */
+  height: 500px;
+}
+
+#table-tabs {
+  width: 80%;
+}
+
+/* css styling for the jquery generated tab */
+#table-tabs .tab_content {
+  max-width: 100%;
+  max-height: 500px;
+  overflow: scroll;
+  padding: 0;
+  margin: 5px;
+}
+
+table {
+  text-align: center;
+  border-spacing: 0;
+}
+/* making the table head container sticky so it's elements won't move (fixed) vertically */
+#thead {
+  position: sticky;
+  top: 0;
+  background-color: lightblue;
+}
+th,
+td {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+/* makes the first column sticky so it's elements won't move (fixed) when moving horizontally */
+th:first-child,
+td:first-child {
+  position: sticky;
+  left: 0;
+  background-color: lightblue;
+}
