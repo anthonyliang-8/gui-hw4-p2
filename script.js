@@ -10,7 +10,10 @@ $(document).ready(function () {
   removeAllTabs();
 });
 
-var slidersInitialized = false;
+/* sets slidersToggle to false so sliders can be built properly and then set to false
+ afterwards so input fields won't be reinitialized and stuck at 0
+ */
+var slidersToggle = false;
 
 // get html values to use in javascript
 const tbody = document.getElementById("tbody");
@@ -20,18 +23,18 @@ const err = document.getElementById("err");
 
 function initSliders() {
   // check if sliders are not initialized
-  if (!slidersInitialized) {
-    buildSlider("min_col_val", "min_col_slider");
-    buildSlider("max_col_val", "max_col_slider");
-    buildSlider("min_row_val", "min_row_slider");
-    buildSlider("max_row_val", "max_row_slider");
+  if (!slidersToggle) {
+    createSlider("min_col_val", "min_col_slider");
+    createSlider("max_col_val", "max_col_slider");
+    createSlider("min_row_val", "min_row_slider");
+    createSlider("max_row_val", "max_row_slider");
 
-    slidersInitialized = true; // set to true after initializing
+    slidersToggle = true; // set to true after initializing
   }
 }
 
 // function to generate the table based on user input
-function generateTable() {
+function createTable() {
   var min_col_val = parseInt(document.getElementById("min_col_val").value);
   var max_col_val = parseInt(document.getElementById("max_col_val").value);
   var min_row_val = parseInt(document.getElementById("min_row_val").value);
@@ -145,19 +148,19 @@ function formValidate() {
         required: "No number found for min col, please enter a number.",
       },
       max_col_val: {
-        required: "No number found for max col, please enter a number."
+        required: "No number found for max col, please enter a number.",
       },
       min_row_val: {
-        required: "No number found for min row, please enter a number."
+        required: "No number found for min row, please enter a number.",
       },
       max_row_val: {
-        required: "No number found for max row, please enter a number."
-      }
+        required: "No number found for max row, please enter a number.",
+      },
     },
     // only run the following functions if the form passes validation successfully
     submitHandler: function (form) {
       if ($("#form").valid() == true) {
-        generateTable(); // generate table only if there are no errors
+        createTable(); // generate table only if there are no errors
         createTabs(); // create the tabs once the form is successfully validated
         form.reset(); // clear form data after successful submission
       }
@@ -250,7 +253,7 @@ function removeAllTabs() {
 }
 
 // function to build the slider, passes in id of inputs and id of the slider elements
-function buildSlider(inputId, sliderId) {
+function createSlider(inputId, sliderId) {
   // set the following min max values for the sliders
   $("#" + sliderId).slider({
     range: "min",
@@ -259,17 +262,17 @@ function buildSlider(inputId, sliderId) {
     slide: function (e, ui) {
       // use value of the specified id passed in
       $("#" + inputId).val(ui.value);
-      generateTable(); // generate table dynamically once the slider is moved
+      createTable(); // generate table dynamically once the slider is moved
     },
   });
   $("#" + inputId).on("input", function () {
     $("#" + sliderId).slider("value", $(this).val());
-    generateTable(); // generate table dynamically once the slider is moved
+    createTable(); // generate table dynamically once the slider is moved
   });
 }
 
 // create the sliders for each input field
-buildSlider("min_col_val", "min_col_slider");
-buildSlider("max_col_val", "max_col_slider");
-buildSlider("min_row_val", "min_row_slider");
-buildSlider("max_row_val", "max_row_slider");
+createSlider("min_col_val", "min_col_slider");
+createSlider("max_col_val", "max_col_slider");
+createSlider("min_row_val", "min_row_slider");
+createSlider("max_row_val", "max_row_slider");
